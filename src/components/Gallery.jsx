@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { generateImages } from '../data';
+import { generateImages } from '../data';  // ← This is correct!
 
 const Gallery = () => {
-  const [images] = useState(generateImages);
+  // Call the function to get images
+  const [images] = useState(generateImages());  // ← Added () to call the function
   const [selectedImage, setSelectedImage] = useState(null);
   const [visibleImages, setVisibleImages] = useState([]);
   const [page, setPage] = useState(1);
