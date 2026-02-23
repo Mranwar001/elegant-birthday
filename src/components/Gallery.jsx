@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { images } from '../data';  // ← Fixed import
+import { images } from '../data';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [visibleImages, setVisibleImages] = useState([]);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
-  const imagesPerPage = 20;
+  const imagesPerPage = 6;
 
   useEffect(() => {
     setVisibleImages(images.slice(0, imagesPerPage * page));
@@ -19,10 +19,12 @@ const Gallery = () => {
           setPage((prev) => prev + 1);
         }
       },
-      { threshold: 0.1, rootMargin: '100px' }
+      { threshold: 0.1 }
     );
 
-    if (loader.current) observer.observe(loader.current);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
     return () => observer.disconnect();
   }, [visibleImages.length]);
 
@@ -42,8 +44,7 @@ const Gallery = () => {
         {visibleImages.map((image, index) => (
           <div 
             key={image.id}
-            className="gallery-item fade-in"
-            style={{ animationDelay: `${index * 0.05}s` }}
+            className="gallery-item"
             onClick={() => handleImageClick(image)}
           >
             <img 
