@@ -17,7 +17,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Intro Screen Styles */
+/* Intro Screen */
 .intro-screen {
   position: fixed;
   top: 0;
@@ -73,7 +73,6 @@ body {
 }
 
 .enter-button {
-  position: relative;
   padding: 1.2rem 3.5rem;
   font-size: 1.3rem;
   background: transparent;
@@ -81,31 +80,8 @@ body {
   color: #ffb6c1;
   border-radius: 50px;
   cursor: pointer;
-  overflow: hidden;
   transition: all 0.3s;
   animation: fadeIn 1s ease-out 0.6s both;
-}
-
-.button-text {
-  position: relative;
-  z-index: 1;
-}
-
-.button-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 182, 193, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.enter-button:hover .button-glow {
-  width: 300px;
-  height: 300px;
 }
 
 .enter-button:hover {
@@ -114,30 +90,6 @@ body {
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
   transform: scale(1.05);
   letter-spacing: 3px;
-}
-
-.floating-hearts {
-  position: absolute;
-  bottom: -50px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.floating-hearts span {
-  font-size: 1.5rem;
-  animation: float 3s infinite;
-  opacity: 0.6;
-}
-
-.floating-hearts span:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.floating-hearts span:nth-child(3) {
-  animation-delay: 1s;
 }
 
 /* Main Content */
@@ -220,7 +172,7 @@ body {
 }
 
 .player-info {
-  min-width: 180px;
+  min-width: 150px;
 }
 
 .track-name {
@@ -228,31 +180,13 @@ body {
   font-size: 0.9rem;
   display: block;
   margin-bottom: 0.2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .artist-name {
   color: #ffb6c1;
   font-size: 0.8rem;
   display: block;
-  margin-bottom: 0.3rem;
   opacity: 0.8;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 182, 193, 0.2);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ffb6c1, #ffd700);
-  transition: width 0.1s linear;
 }
 
 .player-controls {
@@ -261,64 +195,29 @@ body {
 }
 
 .control-btn {
-  background: transparent;
-  border: none;
+  background: rgba(255, 182, 193, 0.2);
+  border: 1px solid #ffb6c1;
   color: #ffb6c1;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
   transition: all 0.3s;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .control-btn:hover {
+  background: #ffb6c1;
+  color: #1a0b0b;
   transform: scale(1.1);
-  color: #ffd700;
-  text-shadow: 0 0 10px #ffd700;
 }
 
-.play-pause {
-  background: rgba(255, 182, 193, 0.2);
-  border: 1px solid #ffb6c1;
-}
-
-.volume-control {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #ffb6c1;
-}
-
-.volume-slider {
-  width: 60px;
-  height: 4px;
-  -webkit-appearance: none;
-  background: rgba(255, 182, 193, 0.2);
-  border-radius: 2px;
-  outline: none;
-}
-
-.volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  background: #ffd700;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Gallery Styles */
+/* Gallery */
 .gallery-container {
   padding: 2rem 0;
 }
 
 .masonry-grid {
-  column-count: 4;
+  column-count: 3;
   column-gap: 1.5rem;
   margin: 0 auto;
 }
@@ -330,15 +229,12 @@ body {
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease-out;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
 }
 
-.gallery-item.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+.gallery-item:hover {
+  transform: translateY(-5px);
 }
 
 .gallery-image {
@@ -395,7 +291,7 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Modal Styles */
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -468,9 +364,8 @@ body {
   transform: rotate(90deg);
 }
 
-/* Canvas Elements */
-.heart-particles,
-.confetti-canvas {
+/* Heart Particles Canvas */
+.heart-particles {
   position: fixed;
   top: 0;
   left: 0;
@@ -478,10 +373,6 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 1;
-}
-
-.confetti-canvas {
-  z-index: 9999;
 }
 
 /* Animations */
@@ -494,11 +385,6 @@ body {
     transform: translate(-50%, -50%) scale(1.1);
     opacity: 0.6;
   }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
 }
 
 @keyframes fadeInDown {
@@ -558,11 +444,7 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .masonry-grid {
-    column-count: 3;
-  }
-  
-  .intro-title {
-    font-size: 3rem;
+    column-count: 2;
   }
 }
 
@@ -589,20 +471,13 @@ body {
   }
   
   .masonry-grid {
-    column-count: 2;
-    column-gap: 1rem;
+    column-count: 1;
   }
   
   .music-player {
     bottom: 1rem;
     right: 1rem;
     padding: 0.5rem 1rem;
-    flex-wrap: wrap;
-    max-width: 300px;
-  }
-  
-  .player-info {
-    min-width: 120px;
   }
   
   .modal-close {
@@ -612,21 +487,5 @@ body {
   
   .messages-container {
     font-size: 1rem;
-    min-height: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .masonry-grid {
-    column-count: 1;
-  }
-  
-  .intro-title {
-    font-size: 2rem;
-  }
-  
-  .enter-button {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
   }
 }
