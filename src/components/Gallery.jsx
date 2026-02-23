@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { generateImages } from '../data';  // ← This is correct!
+import { images } from '../data';  // ← Fixed import
 
 const Gallery = () => {
-  // Call the function to get images
-  const [images] = useState(generateImages());  // ← Added () to call the function
   const [selectedImage, setSelectedImage] = useState(null);
   const [visibleImages, setVisibleImages] = useState([]);
   const [page, setPage] = useState(1);
@@ -12,7 +10,7 @@ const Gallery = () => {
 
   useEffect(() => {
     setVisibleImages(images.slice(0, imagesPerPage * page));
-  }, [images, page]);
+  }, [page]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,7 +24,7 @@ const Gallery = () => {
 
     if (loader.current) observer.observe(loader.current);
     return () => observer.disconnect();
-  }, [visibleImages.length, images.length]);
+  }, [visibleImages.length]);
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
